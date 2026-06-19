@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Josuas Alcidas — IT & Cybersecurity Portfolio</title>
+<meta name="description" content="IT Systems Engineer specializing in IAM, Azure, Microsoft 365, and Cybersecurity. Portfolio of projects, certifications, and lab work.">
+<meta property="og:title" content="Josuas Alcidas — IT & Cybersecurity Portfolio">
+<meta property="og:description" content="IAM & SOC Lab Projects | Azure | Microsoft 365 | Security+">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+<style>
+/* ===================== DESIGN TOKENS ===================== */
+:root, [data-theme="light"] {
+  --color-bg:              #f7f6f2;
+  --color-surface:         #f9f8f5;
+  --color-surface-2:       #fbfbf9;
+  --color-surface-offset:  #f0ede8;
+  --color-divider:         #dcd9d5;
+  --color-border:          rgba(40,37,29,0.1);
+  --color-text:            #28251d;
+  --color-text-muted:      #6b6a65;
+  --color-text-faint:      #b0afaa;
+  --color-primary:         #01696f;
+  --color-primary-hover:   #0c4e54;
+  --color-primary-highlight: #d0dedd;
+  --color-accent:          #437a22;
+  --color-accent-highlight: #d4dfcc;
+  --color-warning:         #964219;
+  --color-warning-highlight: #ddcfc6;
+  --color-blue:            #006494;
+  --color-blue-highlight:  #c6d8e4;
+  --color-purple:          #7a39bb;
+  --color-purple-highlight:#dacfde;
+  --shadow-sm: 0 1px 3px rgba(40,37,29,0.07);
+  --shadow-md: 0 4px 16px rgba(40,37,29,0.09);
+  --shadow-lg: 0 12px 40px rgba(40,37,29,0.12);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --text-xs:   clamp(0.75rem,  0.7rem  + 0.25vw, 0.875rem);
+  --text-sm:   clamp(0.875rem, 0.8rem  + 0.35vw, 1rem);
+  --text-base: clamp(1rem,     0.95rem + 0.25vw, 1.125rem);
+  --text-lg:   clamp(1.125rem, 1rem    + 0.75vw, 1.5rem);
+  --text-xl:   clamp(1.5rem,   1.2rem  + 1.25vw, 2.25rem);
+  --text-2xl:  clamp(2rem,     1.2rem  + 2.5vw,  3.5rem);
+  --space-1: 0.25rem; --space-2: 0.5rem; --space-3: 0.75rem;
+  --space-4: 1rem;    --space-5: 1.25rem; --space-6: 1.5rem;
+  --space-8: 2rem;    --space-10: 2.5rem; --space-12: 3rem;
+  --space-16: 4rem;   --space-20: 5rem;   --space-24: 6rem;
+  --transition: 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  --content-default: 960px;
+  --content-wide: 1200px;
+}
+
+[data-theme="dark"] {
+  --color-bg:              #111110;
+  --color-surface:         #161514;
+  --color-surface-2:       #1c1b19;
+  --color-surface-offset:  #1e1d1b;
+  --color-divider:         #252420;
+  --color-border:          rgba(255,255,255,0.08);
+  --color-text:            #d4d3d0;
+  --color-text-muted:      #78776f;
+  --color-text-faint:      #4e4d48;
+  --color-primary:         #4f98a3;
+  --color-primary-hover:   #227f8b;
+  --color-primary-highlight: #1e3535;
+  --color-accent:          #6daa45;
+  --color-accent-highlight:#253318;
+  --color-warning:         #bb653b;
+  --color-warning-highlight:#3a2818;
+  --color-blue:            #5591c7;
+  --color-blue-highlight:  #1a2d3d;
+  --color-purple:          #a86fdf;
+  --color-purple-highlight:#2e1f45;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.25);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.35);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.5);
+}
+
+/* ===================== BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; -webkit-font-smoothing: antialiased; }
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.6;
+  min-height: 100dvh;
+}
+img, picture, svg { display: block; max-width: 100%; }
+ul[role="list"] { list-style: none; }
+button { cursor: pointer; background: none; border: none; font: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+p { max-width: 65ch; text-wrap: pretty; }
+h1,h2,h3,h4 { text-wrap: balance; line-height: 1.2; }
+:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 3px; border-radius: var(--radius-sm); }
+* { transition: color var(--transition), background-color var(--transition), border-color var(--transition), box-shadow var(--transition); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ===================== LAYOUT ===================== */
+.container { max-width: var(--content-default); margin-inline: auto; padding-inline: var(--space-6); }
+.container--wide { max-width: var(--content-wide); margin-inline: auto; padding-inline: var(--space-6); }
+
+/* ===================== NAV ===================== */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: color-mix(in oklab, var(--color-bg) 85%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-3) 0;
+}
+.nav-inner {
+  max-width: var(--content-default); margin-inline: auto; padding-inline: var(--space-6);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-4);
+}
+.nav-logo { display: flex; align-items: center; gap: var(--space-3); }
+.nav-logo-mark {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  background: var(--color-primary); display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.nav-logo-mark svg { color: #fff; }
+.nav-logo-text { font-size: var(--text-sm); font-weight: 600; }
+.nav-logo-sub { font-size: var(--text-xs); color: var(--color-text-muted); font-weight: 400; }
+.nav-links { display: flex; align-items: center; gap: var(--space-1); }
+.nav-link {
+  font-size: var(--text-sm); color: var(--color-text-muted); padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md); font-weight: 500;
+}
+.nav-link:hover { color: var(--color-text); background: var(--color-surface-offset); }
+.nav-actions { display: flex; align-items: center; gap: var(--space-2); }
+.btn-icon {
+  width: 36px; height: 36px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--color-text-muted); border: 1px solid var(--color-border);
+}
+.btn-icon:hover { color: var(--color-text); background: var(--color-surface-offset); }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-primary); color: #fff;
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-md);
+  font-size: var(--text-sm); font-weight: 600;
+}
+.btn-primary:hover { background: var(--color-primary-hover); }
+
+/* ===================== HERO ===================== */
+.hero {
+  padding: clamp(var(--space-16), 10vw, var(--space-24)) 0 clamp(var(--space-12), 8vw, var(--space-20));
+  border-bottom: 1px solid var(--color-border);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: -50%; right: -10%; width: 600px; height: 600px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--color-primary) 8%, transparent) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-inner { display: grid; grid-template-columns: 1fr auto; gap: var(--space-12); align-items: start; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  background: var(--color-primary-highlight); color: var(--color-primary);
+  font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
+  margin-bottom: var(--space-5);
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-primary); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero-title {
+  font-size: var(--text-2xl); font-weight: 700; letter-spacing: -0.02em;
+  margin-bottom: var(--space-4); color: var(--color-text);
+}
+.hero-title span { color: var(--color-primary); }
+.hero-desc { font-size: var(--text-base); color: var(--color-text-muted); max-width: 52ch; margin-bottom: var(--space-8); line-height: 1.7; }
+.hero-chips { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-8); }
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  font-size: var(--text-xs); font-weight: 500;
+  padding: var(--space-1) var(--space-3); border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+}
+.chip-icon { width: 12px; height: 12px; }
+.hero-ctas { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  border: 1px solid var(--color-border); background: var(--color-surface);
+  color: var(--color-text-muted); padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md); font-size: var(--text-sm); font-weight: 500;
+}
+.btn-secondary:hover { color: var(--color-text); background: var(--color-surface-offset); }
+.hero-stats { display: flex; flex-direction: column; gap: var(--space-4); }
+.stat-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-4) var(--space-5);
+  text-align: center; box-shadow: var(--shadow-sm); min-width: 120px;
+}
+.stat-number { font-size: var(--text-xl); font-weight: 700; color: var(--color-primary); display: block; }
+.stat-label { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+/* ===================== SECTION HEADERS ===================== */
+.section { padding: clamp(var(--space-12), 6vw, var(--space-20)) 0; border-bottom: 1px solid var(--color-border); }
+.section:last-child { border-bottom: none; }
+.section-header { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-8); flex-wrap: wrap; }
+.section-label {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-primary); margin-bottom: var(--space-2);
+}
+.section-title { font-size: var(--text-xl); font-weight: 700; letter-spacing: -0.01em; }
+.section-muted { font-size: var(--text-sm); color: var(--color-text-muted); }
+.link-sm { display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--text-sm); color: var(--color-primary); font-weight: 500; }
+.link-sm:hover { color: var(--color-primary-hover); }
+
+/* ===================== PROJECT CARDS ===================== */
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(440px,100%), 1fr)); gap: var(--space-4); }
+.project-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl); padding: var(--space-6);
+  box-shadow: var(--shadow-sm); position: relative; overflow: hidden;
+}
+.project-card:hover { box-shadow: var(--shadow-md); border-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-border)); transform: translateY(-1px); }
+.project-card-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: var(--space-4); gap: var(--space-3); }
+.project-icon {
+  width: 44px; height: 44px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.project-status { font-size: var(--text-xs); font-weight: 600; padding: var(--space-1) var(--space-2); border-radius: var(--radius-full); }
+.status-planning { background: var(--color-warning-highlight); color: var(--color-warning); }
+.status-active { background: var(--color-primary-highlight); color: var(--color-primary); }
+.status-complete { background: var(--color-accent-highlight); color: var(--color-accent); }
+.project-path { font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-faint); margin-bottom: var(--space-1); }
+.project-title { font-size: var(--text-lg); font-weight: 700; margin-bottom: var(--space-2); letter-spacing: -0.01em; }
+.project-desc { font-size: var(--text-sm); color: var(--color-text-muted); margin-bottom: var(--space-4); line-height: 1.6; }
+.project-tech { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-4); }
+.tech-tag {
+  font-size: var(--text-xs); font-family: var(--font-mono);
+  padding: 2px var(--space-2); border-radius: var(--radius-sm);
+  background: var(--color-surface-offset); border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+}
+.project-progress { margin-top: auto; }
+.progress-label { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--color-text-muted); margin-bottom: var(--space-2); }
+.progress-bar { height: 4px; background: var(--color-divider); border-radius: var(--radius-full); overflow: hidden; }
+.progress-fill { height: 100%; border-radius: var(--radius-full); background: var(--color-primary); }
+.progress-fill.green { background: var(--color-accent); }
+.progress-fill.orange { background: var(--color-warning); }
+
+/* ===================== CERT CARDS ===================== */
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px,100%), 1fr)); gap: var(--space-4); }
+.cert-card {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+}
+.cert-card:hover { box-shadow: var(--shadow-md); }
+.cert-header { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-3); }
+.cert-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.cert-name { font-size: var(--text-sm); font-weight: 700; }
+.cert-code { font-size: var(--text-xs); font-family: var(--font-mono); color: var(--color-text-muted); }
+.cert-badge {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  font-size: var(--text-xs); font-weight: 600; padding: 2px var(--space-2);
+  border-radius: var(--radius-full);
+}
+.badge-earned { background: var(--color-accent-highlight); color: var(--color-accent); }
+.badge-next { background: var(--color-primary-highlight); color: var(--color-primary); }
+.badge-planned { background: var(--color-surface-offset); color: var(--color-text-muted); }
+
+/* ===================== SKILLS ===================== */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px,100%), 1fr)); gap: var(--space-4); }
+.skill-group {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+}
+.skill-group-title { font-size: var(--text-sm); font-weight: 700; margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2); }
+.skill-list { display: flex; flex-direction: column; gap: var(--space-3); }
+.skill-item { display: flex; flex-direction: column; gap: var(--space-1); }
+.skill-row { display: flex; justify-content: space-between; align-items: center; }
+.skill-name { font-size: var(--text-sm); color: var(--color-text-muted); }
+.skill-pct { font-size: var(--text-xs); font-family: var(--font-mono); color: var(--color-text-faint); }
+.skill-bar { height: 4px; background: var(--color-divider); border-radius: var(--radius-full); overflow: hidden; }
+.skill-fill { height: 100%; border-radius: var(--radius-full); background: var(--color-primary); }
+
+/* ===================== ABOUT ===================== */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-8); align-items: start; }
+.about-text p { color: var(--color-text-muted); line-height: 1.7; margin-bottom: var(--space-4); font-size: var(--text-base); }
+.timeline { display: flex; flex-direction: column; gap: var(--space-4); }
+.timeline-item { display: grid; grid-template-columns: auto 1fr; gap: var(--space-4); }
+.timeline-dot-col { display: flex; flex-direction: column; align-items: center; gap: 0; padding-top: var(--space-1); }
+.timeline-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; }
+.timeline-line { width: 1px; flex: 1; background: var(--color-divider); min-height: var(--space-6); }
+.timeline-date { font-size: var(--text-xs); font-family: var(--font-mono); color: var(--color-text-faint); margin-bottom: var(--space-1); }
+.timeline-role { font-size: var(--text-sm); font-weight: 700; }
+.timeline-company { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+/* ===================== CONTACT ===================== */
+.contact-bar {
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl); padding: var(--space-8);
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
+}
+.contact-info h2 { font-size: var(--text-xl); font-weight: 700; margin-bottom: var(--space-2); }
+.contact-info p { color: var(--color-text-muted); font-size: var(--text-sm); max-width: 40ch; }
+.contact-links { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.contact-link {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-sm); font-weight: 500; color: var(--color-text-muted);
+  padding: var(--space-2) var(--space-4); border-radius: var(--radius-md);
+  border: 1px solid var(--color-border); background: var(--color-surface-2);
+}
+.contact-link:hover { color: var(--color-primary); border-color: var(--color-primary); }
+
+/* ===================== FOOTER ===================== */
+footer { padding: var(--space-6) 0; border-top: 1px solid var(--color-border); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; }
+.footer-text { font-size: var(--text-xs); color: var(--color-text-faint); }
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 768px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: row; flex-wrap: wrap; }
+  .about-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .certs-grid { grid-template-columns: 1fr; }
+  .contact-bar { flex-direction: column; align-items: flex-start; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="nav-logo-text">Josuas Alcidas</div>
+        <div class="nav-logo-sub">IT Systems Engineer</div>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#projects" class="nav-link">Projects</a>
+      <a href="#certifications" class="nav-link">Certs</a>
+      <a href="#skills" class="nav-link">Skills</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-icon" data-theme-toggle aria-label="Toggle theme">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <a href="#contact" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Hire Me
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span class="badge-dot"></span>Available for new opportunities</div>
+        <h1 class="hero-title">IAM & Cloud Security<br><span>Lab Portfolio</span></h1>
+        <p class="hero-desc">IT Systems Engineer building hands-on expertise in Identity & Access Management, Azure cloud administration, and Security Operations. Documenting every lab, every project, every step.</p>
+        <div class="hero-chips">
+          <span class="chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Security+</span>
+          <span class="chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>SentinelOne EDR</span>
+          <span class="chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>Windows Server 2019–2025</span>
+          <span class="chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>PowerShell</span>
+          <span class="chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Entra ID</span>
+          <span class="chip"><svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>Microsoft Sentinel</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            View Projects
+          </a>
+          <a href="https://linkedin.com/in/josuasalcidas" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/Joshthattechguy" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card"><span class="stat-number">2+</span><span class="stat-label">Years Experience</span></div>
+        <div class="stat-card"><span class="stat-number">400+</span><span class="stat-label">Devices Managed</span></div>
+        <div class="stat-card"><span class="stat-number">3</span><span class="stat-label">Certifications</span></div>
+        <div class="stat-card"><span class="stat-number">5</span><span class="stat-label">Lab Projects</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          Lab Projects
+        </div>
+        <h2 class="section-title">Hands-On Project Work</h2>
+      </div>
+      <a href="https://github.com/Joshthattechguy" target="_blank" rel="noopener noreferrer" class="link-sm">
+        View on GitHub
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+      </a>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon" style="background:var(--color-primary-highlight);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <span class="project-status status-planning">Planning</span>
+        </div>
+        <div class="project-path">IAM Path · Project 1</div>
+        <h3 class="project-title">Hybrid Identity Lab</h3>
+        <p class="project-desc">Deploy Windows Server 2022 DC on Hyper-V, configure Entra Cloud Sync, sync on-prem AD users to Microsoft Entra ID tenant. Mirrors real enterprise hybrid architecture.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Hyper-V</span>
+          <span class="tech-tag">Windows Server 2022</span>
+          <span class="tech-tag">Entra Cloud Sync</span>
+          <span class="tech-tag">Active Directory</span>
+          <span class="tech-tag">PowerShell</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-label"><span>Progress</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill orange" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon" style="background:var(--color-primary-highlight);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span class="project-status status-planning">Planning</span>
+        </div>
+        <div class="project-path">IAM Path · Project 2</div>
+        <h3 class="project-title">Conditional Access & Zero Trust</h3>
+        <p class="project-desc">Build and enforce MFA, block legacy auth, configure SSPR and Identity Protection risk policies in Entra ID P2. Document policy logic and test in report-only mode first.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Entra ID P2</span>
+          <span class="tech-tag">Conditional Access</span>
+          <span class="tech-tag">SSPR</span>
+          <span class="tech-tag">Identity Protection</span>
+          <span class="tech-tag">MFA</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-label"><span>Progress</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill orange" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon" style="background:var(--color-accent-highlight);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <span class="project-status status-planning">Planning</span>
+        </div>
+        <div class="project-path">IAM Path · Project 3</div>
+        <h3 class="project-title">PIM & RBAC Just-in-Time Access</h3>
+        <p class="project-desc">Configure Azure Privileged Identity Management with approval workflows for JIT admin access. Assign least-privilege RBAC roles across resource groups. Simulate full activation flow.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Azure PIM</span>
+          <span class="tech-tag">RBAC</span>
+          <span class="tech-tag">Entra ID P2</span>
+          <span class="tech-tag">Zero Trust</span>
+          <span class="tech-tag">Azure Portal</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-label"><span>Progress</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill green" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon" style="background:var(--color-blue-highlight);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-blue)" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          </div>
+          <span class="project-status status-planning">Planning</span>
+        </div>
+        <div class="project-path">IAM Path · Project 4</div>
+        <h3 class="project-title">SAML SSO & SCIM Provisioning</h3>
+        <p class="project-desc">Register an app in Entra ID, configure SAML-based Single Sign-On, map claims, and enable SCIM auto-provisioning for user lifecycle management. End-to-end identity integration.</p>
+        <div class="project-tech">
+          <span class="tech-tag">SAML 2.0</span>
+          <span class="tech-tag">SCIM</span>
+          <span class="tech-tag">App Registration</span>
+          <span class="tech-tag">Entra ID</span>
+          <span class="tech-tag">SSO</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-label"><span>Progress</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon" style="background:var(--color-warning-highlight);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <span class="project-status status-planning">Planning</span>
+        </div>
+        <div class="project-path">IAM Path · Project 5</div>
+        <h3 class="project-title">IAM Misconfiguration Audit</h3>
+        <p class="project-desc">Intentionally misconfigure Entra ID (overprivileged accounts, legacy auth, no MFA). Document findings as a formal security audit report. Remediate and document each fix with before/after evidence.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Entra ID</span>
+          <span class="tech-tag">Security Audit</span>
+          <span class="tech-tag">Kali Linux</span>
+          <span class="tech-tag">PowerShell</span>
+          <span class="tech-tag">Documentation</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-label"><span>Progress</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill orange" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Bonus SOC Project -->
+      <div class="project-card">
+        <div class="project-card-header">
+          <div class="project-icon" style="background:var(--color-purple-highlight);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-purple)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <span class="project-status status-planning">Planning</span>
+        </div>
+        <div class="project-path">SOC Path · Project 1</div>
+        <h3 class="project-title">Azure Sentinel Honeypot SIEM</h3>
+        <p class="project-desc">Deploy an intentionally exposed Azure VM to attract real internet attacks. Forward security logs into Microsoft Sentinel, build KQL queries, and visualize attack origins on a world map workbook.</p>
+        <div class="project-tech">
+          <span class="tech-tag">Microsoft Sentinel</span>
+          <span class="tech-tag">KQL</span>
+          <span class="tech-tag">Log Analytics</span>
+          <span class="tech-tag">Azure VM</span>
+          <span class="tech-tag">Workbooks</span>
+        </div>
+        <div class="project-progress">
+          <div class="progress-label"><span>Progress</span><span>0%</span></div>
+          <div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="section" id="certifications">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+          Certifications
+        </div>
+        <h2 class="section-title">Cert Roadmap</h2>
+      </div>
+    </div>
+    <div class="certs-grid">
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-accent-highlight);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><div class="cert-name">CompTIA Security+</div><div class="cert-code">SY0-701</div></div>
+        </div>
+        <span class="cert-badge badge-earned">✓ Earned</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-accent-highlight);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><div class="cert-name">TDX Incident Response</div><div class="cert-code">Expert</div></div>
+        </div>
+        <span class="cert-badge badge-earned">✓ Earned</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-primary-highlight);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div><div class="cert-name">CompTIA Network+</div><div class="cert-code">N10-009</div></div>
+        </div>
+        <span class="cert-badge badge-next">→ In Progress</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-primary-highlight);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <div><div class="cert-name">Azure Administrator</div><div class="cert-code">AZ-104</div></div>
+        </div>
+        <span class="cert-badge badge-next">→ Next Target</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-surface-offset);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          </div>
+          <div><div class="cert-name">Identity & Access Admin</div><div class="cert-code">SC-300</div></div>
+        </div>
+        <span class="cert-badge badge-planned">Planned</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-surface-offset);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div><div class="cert-name">Security Operations Analyst</div><div class="cert-code">SC-200</div></div>
+        </div>
+        <span class="cert-badge badge-planned">Planned</span>
+      </div>
+      <div class="cert-card">
+        <div class="cert-header">
+          <div class="cert-icon" style="background:var(--color-surface-offset);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-muted)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div><div class="cert-name">Azure Security Engineer</div><div class="cert-code">AZ-500</div></div>
+        </div>
+        <span class="cert-badge badge-planned">Planned</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Skills
+        </div>
+        <h2 class="section-title">Technical Proficiency</h2>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-title" style="color:var(--color-primary);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          Identity & Access Management
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Active Directory</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Entra ID / Azure AD</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Conditional Access</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Azure PIM / RBAC</span><span class="skill-pct">40%</span></div><div class="skill-bar"><div class="skill-fill" style="width:40%"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title" style="color:var(--color-purple);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          Security Operations
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">SentinelOne EDR</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%;background:var(--color-purple)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Incident Response</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%;background:var(--color-purple)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Microsoft Sentinel</span><span class="skill-pct">35%</span></div><div class="skill-bar"><div class="skill-fill" style="width:35%;background:var(--color-purple)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">KQL</span><span class="skill-pct">20%</span></div><div class="skill-bar"><div class="skill-fill" style="width:20%;background:var(--color-purple)"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title" style="color:var(--color-warning);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Infrastructure
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Windows Server 2019-2025</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" style="width:88%;background:var(--color-warning)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Microsoft 365 / Exchange</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%;background:var(--color-warning)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Hyper-V</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%;background:var(--color-warning)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Azure (AZ-104 in progress)</span><span class="skill-pct">50%</span></div><div class="skill-bar"><div class="skill-fill" style="width:50%;background:var(--color-warning)"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title" style="color:var(--color-accent);">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Scripting & Tools
+        </div>
+        <div class="skill-list">
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">PowerShell</span><span class="skill-pct">82%</span></div><div class="skill-bar"><div class="skill-fill" style="width:82%;background:var(--color-accent)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">NinjaOne RMM</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%;background:var(--color-accent)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">45%</span></div><div class="skill-bar"><div class="skill-fill" style="width:45%;background:var(--color-accent)"></div></div></div>
+          <div class="skill-item"><div class="skill-row"><span class="skill-name">Intune / MDM</span><span class="skill-pct">75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%;background:var(--color-accent)"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT / TIMELINE -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          About
+        </div>
+        <h2 class="section-title">Background & Experience</h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>IT Systems Engineer based in New Jersey with 2+ years of hands-on experience in MSP and enterprise environments. I specialize in Windows Server administration, Microsoft 365, Active Directory, and endpoint security — and I'm actively deepening my expertise in cloud identity (IAM) and security operations (SOC).</p>
+        <p>Currently on a 12-month contract assignment while building a structured home lab portfolio covering the full IAM path: hybrid identity sync, Conditional Access, PIM, SAML SSO, and security audit documentation.</p>
+        <p>Goal: transition into an IAM Engineer or Cloud Security Engineer role with a full cert stack (AZ-104 → SC-300 → AZ-500) backed by documented, project-based evidence of real-world skill.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div><div class="timeline-date">2026 — Present</div><div class="timeline-role">Help Desk Analyst (Contract)</div><div class="timeline-company">Via Randstad · Enterprise Environment</div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div><div class="timeline-date">03/2026 — 06/2026</div><div class="timeline-role">IT Systems Engineer</div><div class="timeline-company">Reliable PBX / IT Solutions USA</div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div><div class="timeline-date">06/2025 — 03/2026</div><div class="timeline-role">IT Help Desk Technician</div><div class="timeline-company">SafeNet Solutions LLC (MSP)</div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div><div class="timeline-line"></div></div>
+          <div><div class="timeline-date">08/2025 — 10/2025</div><div class="timeline-role">Cybersecurity Intern</div><div class="timeline-company">National Cyber Security Institute</div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot-col"><div class="timeline-dot"></div></div>
+          <div><div class="timeline-date">12/2023 — 10/2024</div><div class="timeline-role">Cybersecurity Professional Program</div><div class="timeline-company">New Jersey Institute of Technology</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="contact-bar">
+      <div class="contact-info">
+        <h2>Let's Connect</h2>
+        <p>Open to IAM, Cloud Security, and Systems Engineer opportunities in NJ and remote. Always happy to connect with other IT professionals.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:Josuasalcidas@gmail.com" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Email
+        </a>
+        <a href="https://linkedin.com/in/josuasalcidas" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/Joshthattechguy" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a href="tel:9082653898" class="contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.3 2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.18 6.18l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          908-265-3898
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-text">© 2026 Josuas Alcidas · IT Systems Engineer · Audubon, NJ</p>
+      <p class="footer-text">Built to document the journey from Help Desk → IAM/Cloud Security Engineer</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Theme toggle
+(function(){
+  const btn = document.querySelector('[data-theme-toggle]');
+  const root = document.documentElement;
+  let theme = root.getAttribute('data-theme') || 'dark';
+  function setTheme(t){
+    theme = t;
+    root.setAttribute('data-theme', t);
+    if(btn) btn.innerHTML = t === 'dark'
+      ? '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>'
+      : '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  }
+  setTheme(theme);
+  if(btn) btn.addEventListener('click', () => setTheme(theme === 'dark' ? 'light' : 'dark'));
+})();
+
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+  });
+});
+
+// Animate progress bars on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.style.transition = 'width 1s cubic-bezier(0.16,1,0.3,1)';
+    }
+  });
+}, {threshold: 0.1});
+document.querySelectorAll('.progress-fill, .skill-fill').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
